@@ -11,10 +11,11 @@ export default function News(props) {
     const [totalArticles, setTotalArticles] = useState(0);
 
 
-    const url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=f6622ba61eef4ea080b528ad896e1750&page=${page}&pageSize=5`
+   // const url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=f6622ba61eef4ea080b528ad896e1750&page=${page}&pageSize=5`
 
 
     const fetchData = async () => {
+        const url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=f6622ba61eef4ea080b528ad896e1750&page=${page}&pageSize=5`
         try {
             setIsLoaded(true)
             const data = await fetch(url);
@@ -33,6 +34,7 @@ export default function News(props) {
     },[])
 
     const fetchMoreData = async () => {
+        const url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=f6622ba61eef4ea080b528ad896e1750&page=${page+1}&pageSize=5`
         setPage(page+1);
         const data = await fetch(url);
         const parsedData = await data.json();
